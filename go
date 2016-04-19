@@ -29,6 +29,12 @@ function run {
     ./_out/src/main
 }
 
+function test {
+    build
+    cd ./_out
+    ctest --output-on-failure
+}
+
 function clean {
     rm -rf $OUTDIR
 }

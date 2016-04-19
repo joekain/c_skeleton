@@ -1,0 +1,10 @@
+enable_testing()
+include(FindPkgConfig)
+pkg_search_module(CHECK REQUIRED check)
+include_directories(${CHECK_INCLUDE_DIRS})
+set(LIBS ${LIBS} ${CHECK_LIBRARIES} -lm -lpthread)
+include_directories(. ../src)
+add_executable(test_main test_main.c)
+target_link_libraries(test_main ${LIBS})
+add_test(test_main ${CMAKE_CURRENT_BINARY_DIR}/test_main)
+
